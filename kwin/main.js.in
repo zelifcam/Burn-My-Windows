@@ -26,7 +26,6 @@ const blacklist = [
 class %EFFECT_CLASS% {
     constructor() {
         effect.configChanged.connect(this.loadConfig.bind(this));
-        effect.animationEnded.connect(this.cleanupForcedRoles.bind(this));
         effects.windowAdded.connect(this.slotWindowAdded.bind(this));
         effects.windowClosed.connect(this.slotWindowClosed.bind(this));
         effects.windowDataChanged.connect(this.slotWindowDataChanged.bind(this));
@@ -154,6 +153,11 @@ class %EFFECT_CLASS% {
                     uniform: "uProgress",
                     from: 0.0,
                     to: 1.0
+                },
+                {
+                    type: Effect.Opacity,
+                    from: 0.0,
+                    to: 1.0
                 }
             ]
         });
@@ -194,6 +198,11 @@ class %EFFECT_CLASS% {
                     uniform: "uProgress",
                     from: 0.0,
                     to: 1.0
+                },
+                {
+                    type: Effect.Opacity,
+                    from: 1.0,
+                    to: 0.0
                 }
             ]
         });
